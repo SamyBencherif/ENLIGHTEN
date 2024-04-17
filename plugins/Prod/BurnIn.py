@@ -1,9 +1,9 @@
 from EnlightenPlugin import *
-
-import random
 import datetime
 
 import logging
+import secrets
+
 log = logging.getLogger(__name__)
 
 class BurnIn(EnlightenPluginBase):
@@ -237,28 +237,28 @@ class BurnIn(EnlightenPluginBase):
         eeprom = request.settings.eeprom
 
         if request.fields["Integ Time"]:
-            ms = random.randint(eeprom.min_integration_time_ms, 1000)
+            ms = secrets.SystemRandom().randint(eeprom.min_integration_time_ms, 1000)
             self.log(f"randomized integration time to {ms}ms")
             self.signals.append(f"self.ctl.integration_time_feature.set_ms({ms})")
 
         if request.fields["Gain dB"] and request.settings.is_xs():
-            dB = random.randint(0, 240) / 10.0
+            dB = secrets.SystemRandom().randint(0, 240) / 10.0
             self.log(f"randomized gain to {dB}dB")
             self.signals.append(f"self.ctl.gain_db_feature.set_db({dB})")
 
         if request.fields["TEC Setpoint"] and eeprom.has_cooling:
             # note, we would probably never want to randomize laser setpoint
-            degC = random.randint(eeprom.min_temp_degC, eeprom.max_temp_degC)
+            degC = secrets.SystemRandom().randint(eeprom.min_temp_degC, eeprom.max_temp_degC)
             self.log(f"randomized detector setpoint to {degC}C")
             self.signals.append(f"self.ctl.detector_temperature.apply_setpoint({degC})")
 
         if request.fields["Laser Power"]:
             if eeprom.has_laser_power_calibration():
-                mW = random.randint(eeprom.min_laser_power_mW, eeprom.max_laser_power_mW)
+                mW = secrets.SystemRandom().randint(eeprom.min_laser_power_mW, eeprom.max_laser_power_mW)
                 self.log(f"randomized laser power to {mW}mW")
                 self.signals.append(f"self.ctl.laser_control.set_mW({mW})")
             else:
-                perc = random.randint(1, 100)
+                perc = secrets.SystemRandom().randint(1, 100)
                 self.log(f"randomized laser power to {perc}%")
                 self.signals.append(f"self.ctl.laser_control.set_perc({perc})")
 
