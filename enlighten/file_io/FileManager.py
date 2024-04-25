@@ -101,7 +101,7 @@ class FileManager:
         ########################################################################
 
         pathname = self.files_to_load.pop(0)
-        log.info("Loading %s" % pathname)
+        log.info("Loading %s", pathname)
 
         self.load_callback(pathname)
 

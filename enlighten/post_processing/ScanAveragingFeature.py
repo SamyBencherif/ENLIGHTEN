@@ -76,7 +76,7 @@ class ScanAveragingFeature:
         self.label.setVisible(flag)
 
     def update_label(self, spec, count):
-        log.debug("count %d" % count)
+        log.debug("count %d", count)
         if spec is None:
             return
 

@@ -89,7 +89,7 @@ class ExportFileParser:
         """ @see ColumnFileParser.post_process_metadata """
         if self.format == 1:
             metadata = self.global_metadata
-            log.debug("post-processing metadata: %s" % metadata)
+            log.debug("post-processing metadata: %s", metadata)
         else:
             metadata = em.metadata
 
@@ -176,11 +176,11 @@ class ExportFileParser:
             state.laser_power_perc      = get_float("Laser Power %")
             state.laser_power_mW        = get_float("Laser Power mW")
 
-        log.debug("generating wavecal from coeffs: %s" % eeprom.wavelength_coeffs)
+        log.debug("generating wavecal from coeffs: %s", eeprom.wavelength_coeffs)
         em.settings.update_wavecal()
 
     def generate_measurements(self):
-        log.debug("generate_measurements: %d ExportedMeasurements to convert" % len(self.exported_measurements))
+        log.debug("generate_measurements: %d ExportedMeasurements to convert", len(self.exported_measurements))
         for em in self.exported_measurements:
             self.post_process_metadata(em)
             em.processed_reading.post_load_cleanup(settings=em.settings)

@@ -66,7 +66,7 @@ class IntegrationTimeFeature:
             max_tenths = self.MAX_SLIDER_SEC / self.TENTHS_TO_SEC
 
         now_ms = self.ctl.config.get_float(spec.settings.eeprom.serial_number, "integration_time_ms")
-        log.info("integration time from config: %d" % now_ms)
+        log.info("integration time from config: %d", now_ms)
         
         self.slider.blockSignals(True)
         self.slider.setMinimum(min_tenths)

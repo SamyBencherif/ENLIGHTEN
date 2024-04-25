@@ -1283,13 +1283,7 @@ class Measurement:
             pixels = len(processed)
 
         if False:
-            log.debug(f"save_csv_file_by_column: stage {stage}, pixels {pixels}, " +
-                      f"wavelengths {None if wavelengths is None else len(wavelengths)}, " +
-                      f"wavenumbers {None if wavenumbers is None else len(wavenumbers)}, " +
-                      f"processed {None if processed is None else len(processed)}, " + 
-                      f"raw {None if raw is None else len(raw)}, " +
-                      f"dark {None if dark is None else len(dark)}, " +
-                      f"ref {None if reference is None else len(reference)}")
+            log.debug("%s%s%s%s%s%s%s", f"save_csv_file_by_column: stage {stage}, pixels {pixels}, ", f"wavelengths {None if wavelengths is None else len(wavelengths)}, ", f"wavenumbers {None if wavenumbers is None else len(wavenumbers)}, ", f"processed {None if processed is None else len(processed)}, ", f"raw {None if raw is None else len(raw)}, ", f"dark {None if dark is None else len(dark)}, ", f"ref {None if reference is None else len(reference)}")
 
         with open(pathname, "w", newline="", encoding='utf-8') as f:
 
@@ -1572,7 +1566,7 @@ class Measurement:
         elif field.lower() == "raw":
             a = pr.raw
         else:
-            log.error("build_row: unknown field %s" % field)
+            log.error("build_row: unknown field %s", field)
 
         if a is None:
             return None
