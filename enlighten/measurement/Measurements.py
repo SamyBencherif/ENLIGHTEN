@@ -124,7 +124,7 @@ class Measurements:
                     break
                 items.append(item)
             except:
-                log.warn("resort: popping layout", exc_info=1)
+                log.warning("resort: popping layout", exc_info=1)
                 break
 
         for item in items:
@@ -349,7 +349,7 @@ class Measurements:
     def export_session(self, filename=None, prompt=True):
 
         if not self.count():
-            log.warn("no measurements to export")
+            log.warning("no measurements to export")
             return
 
         ########################################################################

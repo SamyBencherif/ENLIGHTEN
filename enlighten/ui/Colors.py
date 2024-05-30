@@ -100,4 +100,4 @@ class Colors:
             return QtGui.QColor(rhs)
         elif type(rhs) is QtGui.QColor:
             return QtGui.QColor(rhs.rgb())
-        log.warn(f"unknown color type: {type(rhs)}")
+        log.warning(f"unknown color type: {type(rhs)}")

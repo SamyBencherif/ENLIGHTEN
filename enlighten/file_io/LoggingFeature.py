@@ -91,7 +91,7 @@ class LoggingFeature:
                     lines.append(line)
                 self.process(lines)
             except IOError:
-                log.warn("Cannot tail log file")
+                log.warning("Cannot tail log file")
 
         self.timer.start(LoggingFeature.TIMER_SLEEP_MS)
 

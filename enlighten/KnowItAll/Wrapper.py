@@ -200,11 +200,11 @@ class Wrapper:
 
         # to get this far, apparently we received a NACK or timeout...either way
         # we should abort the connection
-        log.warn("verify_connection: sending poison pill to poller")
+        log.warning("verify_connection: sending poison pill to poller")
         if self.q_child:
             self.q_child.put_nowait(None) 
 
-        log.warn("verify_connection: releasing poller")
+        log.warning("verify_connection: releasing poller")
         self.poller = None
         return False
 
@@ -229,9 +229,9 @@ class Wrapper:
             self.poller.join()
             log.debug("disconnect: joined poller")
         except AssertionError:
-            log.warn("disconnect: Poller never successfully connected?", exc_info=1)
+            log.warning("disconnect: Poller never successfully connected?", exc_info=1)
         except NameError:
-            log.warn("disconnect: Poller previously disconnected?", exc_info=1)
+            log.warning("disconnect: Poller previously disconnected?", exc_info=1)
         except Exception:
             log.critical("disconnect: Cannot join poller", exc_info=1)
 

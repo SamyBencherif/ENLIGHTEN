@@ -68,7 +68,7 @@ class ExternalTriggerFeature:
         # self.ctl.multispec.set_state("trigger_source", value)
 
         self.ctl.multispec.change_device_setting("trigger_source", value)
-        log.warn("Trigger source set to %d", value)
+        log.warning("Trigger source set to %d", value)
 
         if self.enabled:
             self.ctl.marquee.info("waiting for trigger")

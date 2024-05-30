@@ -104,7 +104,7 @@ class Sounds:
         elif name.lower() == "exclamation":
             winsound.PlaySound('SystemExclamation', winsound.SND_ALIAS)
         else:
-            log.warn("unknown sound %s", name)
+            log.warning("unknown sound %s", name)
             return
 
         self.last_sound_name  = name
