@@ -76,7 +76,7 @@ def printable(s: str) -> str:
 def determine_encoding(pathname: str) -> str: 
     try:
         with open(pathname, "r", encoding="utf-8") as infile:
-            line = infile.readline()
+            line = infile.readline(5_000_000)
             #log.debug(f"determine_encoding: line [{line}] ({pathname})")
             return "utf-8-sig" if u'\ufeff' in line else "utf-8"
     except:
