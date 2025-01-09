@@ -217,11 +217,11 @@ def make_theme(name, color):
     enlighten_css = newthemedir + os.sep + "enlighten.css"
     with open(enlighten_css, "rt") as e1:
         with open(enlighten_css+".tmp", "wt") as e2:
-            line = e1.readline()
+            line = e1.readline(5_000_000)
             while line:
                 line = process_color(line, target_hsl)
                 e2.write(line + "\n")
-                line = e1.readline()
+                line = e1.readline(5_000_000)
 
     # move enlighten.css.tmp into place
     shutil.move(enlighten_css+".tmp", enlighten_css)
