@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-import xml.etree.ElementTree as ET
 import sys
+import defusedxml.ElementTree
 
 def error(msg):
     print(msg)
@@ -23,7 +23,7 @@ except:
 
 # load .ui XML
 try:
-    tree = ET.parse(ui_path)
+    tree = defusedxml.ElementTree.parse(ui_path)
     root = tree.getroot()
 except:
     error("Unable to parse XML from %s" % ui_path)
