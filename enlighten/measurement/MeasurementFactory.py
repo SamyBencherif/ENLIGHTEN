@@ -267,7 +267,7 @@ class MeasurementFactory:
     # individual spectrum, appended spectra, or a row-ordered export)
     def looks_like_dash(self, pathname, encoding="utf-8"):
         with open(pathname, "r", encoding=encoding) as infile:
-            return infile.readline().startswith("Dash Output")
+            return infile.readline(5_000_000).startswith("Dash Output")
 
     ##
     # Determine whether file looks like a raw columnar CSV with no metadata,
