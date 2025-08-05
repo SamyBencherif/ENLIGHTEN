@@ -1,7 +1,7 @@
-import random
 import logging
 
 from enlighten import common
+import secrets
 
 if common.use_pyside2():
     from PySide2 import QtGui
@@ -378,7 +378,7 @@ class DidYouKnowFeature:
                                                  <li>laser power mw""")
 
         # present tips in random order each time
-        random.shuffle(self.tips)
+        secrets.SystemRandom().shuffle(self.tips)
 
     def __init__(self, ctl):
         self.ctl = ctl
